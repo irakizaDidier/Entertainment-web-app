@@ -1,0 +1,8 @@
+  @media (max-width: 48rem) {
+    .wrapper-content {
+      flex-direction: column;
+    }
+    main {
+      padding-top: 0.75rem;
+    }
+  }

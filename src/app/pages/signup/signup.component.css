@@ -1,0 +1,28 @@
+.input::placeholder {
+  color: #fff;
+  opacity: 0.5;
+}
+.password {
+  background: url("../../../assets/icon-password.svg") no-repeat !important;
+}
+.input {
+  caret-color: #fc4747;
+  background: url("../../../assets/icon-email.svg") no-repeat;
+  background-position: 0.625rem 0.625rem !important;
+  padding-left: 2.25rem;
+}
+.input:focus {
+  background-position: -1.25rem !important;
+  padding-left: 1rem;
+}
+@media (max-width: 26.25rem) {
+  .wrapper-content {
+    padding: 1.5rem;
+  }
+  main {
+    padding: 1.5rem;
+  }
+  .wrapper {
+    flex-wrap: wrap;
+  }
+}

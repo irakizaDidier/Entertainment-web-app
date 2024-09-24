@@ -1,0 +1,57 @@
+ @media (max-width: 48rem) {
+    .wrapper_input {
+      padding-left: 1.5625rem;
+    }
+  }
+  @media (max-width: 26.25rem) {
+    .wrapper_input {
+      padding-left: 1rem;
+    }
+    .wrapper {
+      gap: 0.75rem;
+    }
+    .wrapper-result {
+      padding: 0rem 1rem 1rem 1rem;
+    }
+  }
+  @media (max-width: 48rem) {
+    .wrapper-result {
+      padding: 0rem 1.5625rem 1.5625rem 1.5625rem;
+    }
+    .wrapper-content {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 1.5rem;
+      width: 100%;
+    }
+    .card .image {
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      height: 8.75rem;
+    }
+    .card {
+      width: 100% !important;
+    }
+  }
+  @media (max-width: 37.25rem) {
+    .result {
+      font-size: 1.25rem;
+      letter-spacing: -0.0195rem;
+      margin: 0rem 0rem 1rem 0rem;
+    }
+    h2 {
+      font-size: 1.25rem;
+      margin: 1rem 0rem;
+    }
+    .wrapper-result {
+      padding: 0rem 1rem 1rem 1rem;
+    }
+    .wrapper-content {
+      gap: 0.9375rem;
+    }
+    .card .image {
+      height: 6.875rem;
+    }
+  }
