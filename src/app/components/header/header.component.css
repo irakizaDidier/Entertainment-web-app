@@ -1,49 +1,109 @@
-@media (max-width: 48rem) {
+nav ul {
+  @apply flex flex-col items-center;
+  gap: 2.5rem;
+}
+
+.active img {
+  filter: brightness(1000%);
+}
+
+@media (max-width: 36rem) {
   .header {
-    min-height: auto !important;
+    @apply min-h-0 flex-col;
     padding: 1.5625rem;
-    flex-direction: column;
   }
+
   .wrapper {
-    height: auto !important;
+    @apply h-auto;
   }
+
   header div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @apply flex items-center justify-between;
     flex-direction: row;
   }
+
   .content {
-    justify-content: space-between !important;
-    width: 100% !important;
+    @apply justify-between w-full;
   }
+
   .content img {
     margin: 0rem !important;
   }
+
   .header ul {
-    flex-direction: row;
+    @apply flex-row;
   }
 }
+
+@media (max-width: 64rem) {
+  .header {
+    @apply min-h-0 flex-col;
+    padding: 1.5625rem;
+  }
+
+  .wrapper {
+    @apply h-auto;
+  }
+
+  header div {
+    @apply flex items-center justify-between;
+    flex-direction: row;
+  }
+
+  .content {
+    @apply justify-between w-full;
+  }
+
+  .content img {
+    margin: 0rem !important;
+  }
+
+  .header ul {
+    @apply flex-row;
+  }
+}
+
 @media (max-width: 26.25rem) {
   .header {
     padding: 0px !important;
   }
+
   .wrapper {
     padding: 1rem;
-    border-radius: 0rem !important;
+    @apply rounded-none;
   }
+
   .logo {
     width: 1.5625rem;
     height: 1.25rem;
   }
+
   button {
     width: 1rem;
     height: 1rem;
   }
+
   ul {
     gap: 1.5rem !important;
   }
 }
-.active img {
-  filter: brightness(1000%);
+
+@media (max-width: 768px) {
+  nav ul {
+    @apply flex-row justify-around;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  nav ul li {
+    @apply flex-grow text-center;
+  }
+
+  button {
+    @apply flex items-center justify-center;
+  }
+
+  img {
+    width: 1.5rem;
+  }
 }

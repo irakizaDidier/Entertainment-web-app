@@ -10,13 +10,19 @@ import {
   login,
   loginSuccess,
   loginFailure,
+  logout,
+  logoutSuccess,
+  logoutFailure,
+  checkToken,
 } from '../actions/auth.actions';
 import { of } from 'rxjs';
 
 @Injectable()
 export class AuthEffects {
   private signupUrl = 'auth/signup';
-  private loginUrl = '/auth/login';
+  private loginUrl = 'auth/login';
+  private logoutUrl = 'auth/logout';
+  private checkTokenUrl = 'auth/checktoken'; // Define the checkToken URL
 
   constructor(
     private actions$: Actions,
@@ -98,5 +104,56 @@ export class AuthEffects {
         })
       ),
     { dispatch: false }
+  );
+
+  logout$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(logout),
+      mergeMap(() =>
+        this.http.post(this.logoutUrl, {}, { withCredentials: true }).pipe(
+          map(() => logoutSuccess()),
+          catchError((error) => of(logoutFailure({ error })))
+        )
+      )
+    )
+  );
+
+  logoutSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(logoutSuccess),
+        tap(() => {
+          this.router.navigate(['/login']);
+        })
+      ),
+    { dispatch: false }
+  );
+
+  logoutFailure$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(logoutFailure),
+        tap(({ error }) => {
+          console.error('Logout failed:', error);
+        })
+      ),
+    { dispatch: false }
+  );
+
+  checkToken$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(checkToken),
+      mergeMap(() =>
+        this.http.get(this.checkTokenUrl, { withCredentials: true }).pipe(
+          map((response: any) => {
+            return loginSuccess({ response }); // Dispatch login success or do whatever logic needed
+          }),
+          catchError((error) => {
+            this.router.navigate(['/login']);
+            return of(loginFailure({ error }));
+          })
+        )
+      )
+    )
   );
 }

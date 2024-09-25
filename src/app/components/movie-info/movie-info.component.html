@@ -1,0 +1,36 @@
+<p>movie-info works!</p>
+<div class="flex flex-col self-end">
+  <ul class="opacity-75 flex gap-6 list-disc BodyS text-pureWhite">
+    <li class="list-none">
+      <p class="year">{{ movieData.year }}</p>
+    </li>
+    <li>
+      <div class="relative flex gap-[6px] items-center">
+        <div class="dot"></div>
+        <ng-container
+          *ngIf="movieData.category === 'Movie'; then movieImage; else tvImage"></ng-container>
+        <ng-template #movieImage>
+          <img
+            class="w-3 h-3"
+            src="../../../assets/icon-category-movie.svg"
+            aria-hidden="true" />
+        </ng-template>
+        <ng-template #tvImage>
+          <img src="../../../assets/icon-category-tv.svg" />
+        </ng-template>
+        <p class="category">
+          {{ movieData.category }}
+        </p>
+      </div>
+    </li>
+    <li class="relative">
+      <div class="flex items-center">
+        <div class="dot"></div>
+        <p class="rating">
+          {{ movieData.rating }}
+        </p>
+      </div>
+    </li>
+  </ul>
+  <h4 class="HeadingS text-pureWhite">{{ movieData.title }}</h4>
+</div>

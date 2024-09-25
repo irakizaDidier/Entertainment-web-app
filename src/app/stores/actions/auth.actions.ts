@@ -29,3 +29,12 @@ export const loginFailure = createAction(
   '[Auth] Login Failure',
   props<{ error: any }>()
 );
+
+export const logout = createAction('[Auth] Logout');
+export const logoutSuccess = createAction('[Auth] Logout Success');
+export const logoutFailure = createAction(
+  '[Auth] Logout Failure',
+  props<{ error: any }>()
+);
+
+export const checkToken = createAction('[Auth] Check Token');

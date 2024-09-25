@@ -1,0 +1,26 @@
+ <div class="relative flex items-center">
+  <button
+    (click)="handleClickOpenOptions()"
+    class="cursor-pointer"
+    [attr.aria-label]="
+        logoutOptionOpen ? 'close logout option' : 'open logout option'
+      ">
+    <div class="avatar-wrapper border-2 w-10 h-10 rounded-full border-white">
+      <img src="../../../assets/image-avatar.png" alt aria-hidden="true" />
+    </div>
+  </button>
+
+  <div
+    *ngIf="logoutOptionOpen === true"
+    class="wrapper-button-logout absolute left-14 p-5 bg-red z-50 w-[115px] h-[70px] flex items-center justify-center">
+    <div class="arrow"></div>
+    <button
+      *ngIf="!loading"
+      (click)="logoutFn()"
+      class="button cursor-pointer HeadingS text-white"
+      aria-label="click to logout">
+      Logout
+    </button>
+    <div *ngIf="loading" class="loader-circle w-10 h-10"></div>
+  </div>
+</div>

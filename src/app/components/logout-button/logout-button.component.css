@@ -1,0 +1,48 @@
+@media (max-width: 26.25rem) {
+  .avatar-wrapper {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-width: 0.0063rem;
+  }
+}
+.arrow {
+  background-color: #fc4747;
+  z-index: 100;
+  position: absolute;
+  left: -0.625rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  transform: rotate(45deg);
+}
+@media (max-width: 48rem) {
+  .wrapper-button-logout {
+    left: -2.5rem !important;
+    top: 3.875rem;
+  }
+  .arrow {
+    left: 3rem;
+    top: -0.625rem;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+@media (max-width: 26.25rem) {
+  .wrapper-button-logout {
+    left: -2.375rem !important;
+    display: grid;
+    padding: 0rem;
+    place-content: center;
+    width: 3.75rem;
+    top: 2.875rem;
+  }
+  .button {
+    padding: 0.3125rem;
+    font-size: 0.8125rem !important;
+  }
+  .arrow {
+    top: -0.4375rem;
+    left: 41.4px;
+    width: 0.9375rem;
+    height: 0.9375rem;
+  }
+}

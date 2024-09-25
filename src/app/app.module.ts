@@ -10,25 +10,30 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { SignupPage } from './pages/signup/signup.component';
 import { LoginPage } from './pages/login/login.component';
-import { HomeComponent } from './pages/home/home.component';
+import { HomePage } from './pages/home/home.component';
 import { ButtonComponent } from './components/button/button.component';
 import { HeaderComponent } from './components/header/header.component';
+import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
+import { MovieInfoComponent } from './components/movie-info/movie-info.component';
+import { movieReducer } from './stores/reducers/movie.reducers';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupPage,
     LoginPage,
-    HomeComponent,
+    HomePage,
     ButtonComponent,
     HeaderComponent,
+    LogoutButtonComponent,
+    MovieInfoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({ movie: movieReducer }),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],

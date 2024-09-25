@@ -1,0 +1,29 @@
+.dot {
+  display: none;
+}
+@media (max-width: 48rem) {
+  h4 {
+    font-size: 1.125rem;
+  }
+}
+@media (max-width: 26.25rem) {
+  h4 {
+    font-size: 0.875rem !important;
+  }
+  p {
+    font-size: 0.6875rem;
+  }
+  .dot {
+    display: flex;
+    position: absolute;
+    left: -0.5rem;
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 50%;
+    background-color: #fff;
+  }
+  ul {
+    list-style: none;
+    gap: 0.75rem;
+  }
+}
