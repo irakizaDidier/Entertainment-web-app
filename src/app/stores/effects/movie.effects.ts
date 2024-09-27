@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { forkJoin, of } from 'rxjs';
@@ -12,23 +12,24 @@ import {
 @Injectable()
 export class MovieEffects {
   private movieDataUrl = '../../assets/data.json';
-  private getBookmarkedShowsUrl =
-    'https://real-erin-cow-boot.cyclic.app/bookmark/get';
 
-  constructor(private actions$: Actions, private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
+  private actions$ = inject(Actions);
 
   loadMovies$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadMovies),
       mergeMap(() => {
-        const bookmarkedShowsRequest = this.http.get<string[]>(
-          this.getBookmarkedShowsUrl,
-          { withCredentials: true }
-        );
+        // Fetch movies from JSON
         const moviesDataRequest = this.http.get<any[]>(this.movieDataUrl);
 
-        return forkJoin([bookmarkedShowsRequest, moviesDataRequest]).pipe(
-          map(([bookmarkedShows, moviesData]) => {
+        // Simulate bookmarked shows from local storage
+        const bookmarkedShows = JSON.parse(
+          localStorage.getItem('bookmarkedShows') || '[]'
+        );
+
+        return moviesDataRequest.pipe(
+          map((moviesData) => {
             const moviesWithBookmark = moviesData.map((movie) => ({
               ...movie,
               isBookmarked: bookmarkedShows.includes(movie.title),

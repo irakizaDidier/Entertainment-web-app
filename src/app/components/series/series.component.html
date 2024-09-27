@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <app-input [placeholderText]="'Search for TV series'"></app-input>
+
+  <p class="result HeadingL my-8 text-white" *ngIf="searchTerm.length !== 0">
+    Found {{ filteredSeries.length }} results for '{{ searchTerm }}'
+  </p>
+
+  <h2 *ngIf="searchTerm.length === 0" class="HeadingL text-white my-8">
+    TV Series
+  </h2>
+  <div class="wrapper-content flex flex-wrap gap-10">
+    <div
+      *ngFor="let series of filteredSeries"
+      class="card relative rounded-lg flex gap-2 flex-col">
+      <div
+        class="image w-[280px] h-[174px] rounded-lg bg-center bg-cover"
+        [style.background-image]="'url(' + series.thumbnail.regular.large + ')'">
+        <app-bookmark-button
+          [showTitle]="series.title"
+          [showBookmarkedImg]="series.isBookmarked"></app-bookmark-button>
+      </div>
+      <app-movie-info
+        [movieData]="{
+          title: series.title,
+         year: series.year,
+          category: series.category,
+          rating: series.rating,isBookmarked: series.isBookmarked || false,
+        isTrending: series.isTrending || false,
+        thumbnail: series.thumbnail
+        }"></app-movie-info>
+    </div>
+  </div>
+</div>

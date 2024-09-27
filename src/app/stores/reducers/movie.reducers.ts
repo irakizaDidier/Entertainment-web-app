@@ -45,7 +45,10 @@ export const movieReducer = createReducer(
   initialState,
   on(loadMoviesSuccess, (state, { movies }) => ({
     ...state,
-    movies,
+    movies: movies.map((movie) => ({
+      ...movie,
+      year: Number(movie.year),
+    })),
   })),
   on(setSearchTerm, (state, { searchTerm }) => ({
     ...state,

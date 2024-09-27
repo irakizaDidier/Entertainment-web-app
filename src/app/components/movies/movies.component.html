@@ -1,0 +1,34 @@
+<div class="wrapper">
+  <app-input [placeholderText]="'Search for movies'"></app-input>
+
+  <p class="result HeadingL my-8 text-white" *ngIf="searchTerm.length !== 0">
+    Found {{ filteredMovies.length }} results for '{{ searchTerm }}'
+  </p>
+
+  <h2 *ngIf="searchTerm.length === 0" class="HeadingL text-white my-8">
+    Movies
+  </h2>
+  <div class="wrapper-content flex flex-wrap gap-10">
+    <div
+      *ngFor="let movie of filteredMovies"
+      class="card relative rounded-lg flex gap-2 flex-col">
+      <div
+        class="image w-[280px] h-[174px] rounded-lg bg-center bg-cover"
+        [style.background-image]="'url(' + movie.thumbnail.regular.large + ')'">
+        <app-bookmark-button
+          [showTitle]="movie.title"
+          [showBookmarkedImg]="movie.isBookmarked"></app-bookmark-button>
+      </div>
+      <app-movie-info
+        [movieData]="{
+          title: movie.title,
+          year: movie.year,
+          category: movie.category,
+          rating: movie.rating,
+          isBookmarked: movie.isBookmarked || false,
+        isTrending: movie.isTrending || false,
+        thumbnail: movie.thumbnail
+        }"></app-movie-info>
+    </div>
+  </div>
+</div>

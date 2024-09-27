@@ -22,7 +22,7 @@ export class AuthEffects {
   private signupUrl = 'auth/signup';
   private loginUrl = 'auth/login';
   private logoutUrl = 'auth/logout';
-  private checkTokenUrl = 'auth/checktoken'; // Define the checkToken URL
+  private checkTokenUrl = 'auth/checktoken';
 
   constructor(
     private actions$: Actions,
@@ -146,7 +146,7 @@ export class AuthEffects {
       mergeMap(() =>
         this.http.get(this.checkTokenUrl, { withCredentials: true }).pipe(
           map((response: any) => {
-            return loginSuccess({ response }); // Dispatch login success or do whatever logic needed
+            return loginSuccess({ response });
           }),
           catchError((error) => {
             this.router.navigate(['/login']);

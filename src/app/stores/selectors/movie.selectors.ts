@@ -12,3 +12,10 @@ export const selectSearchTerm = createSelector(
   selectMovieState,
   (state) => state.searchTerm
 );
+
+
+
+export const selectMovieByTitle = (title: string) =>
+  createSelector(selectMovies, (movies) =>
+    movies.find((movie) => movie.title === title)
+  );

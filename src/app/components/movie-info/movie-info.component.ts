@@ -1,26 +1,17 @@
-import { Component, Input } from '@angular/core';
-
-interface MovieType {
-  title: string;
-  year: string;
-  category: string;
-  rating: string;
-}
+import { Component, Input, OnInit } from '@angular/core';
+import { MovieTypes } from '../../stores/reducers/movie.reducers';
 
 @Component({
   selector: 'app-movie-info',
   templateUrl: './movie-info.component.html',
-  styleUrl: './movie-info.component.css',
+  styleUrls: ['./movie-info.component.css'],
 })
-export class MovieInfoComponent {
-  @Input() movieData: MovieType;
+export class MovieInfoComponent implements OnInit {
+  @Input() movieData!: MovieTypes;
 
-  constructor() {
-    this.movieData = {
-      title: '',
-      year: '',
-      category: '',
-      rating: '',
-    };
+  constructor() {}
+
+  ngOnInit(): void {
+    console.log('Movie Data:', this.movieData);
   }
 }

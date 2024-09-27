@@ -1,5 +1,9 @@
 # EntertainmentWeb
 
+# Hosted Link
+
+https://entertainment-web-app-chi-eosin.vercel.app/login
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.1.
 
 ## Development server
