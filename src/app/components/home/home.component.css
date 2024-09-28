@@ -1,0 +1,63 @@
+@media (max-width: 48rem) {
+  .wrapper_input {
+    @apply pl-6;
+  }
+
+  .wrapper-result {
+    @apply px-6 py-6;
+  }
+
+  .wrapper-content {
+    @apply grid gap-6 items-center w-full;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .card .image {
+    @apply w-full bg-cover bg-center;
+    height: 8.75rem;
+  }
+
+  .card {
+    @apply w-full;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 26.25rem) {
+  .wrapper_input {
+    @apply pl-4;
+  }
+
+  .wrapper {
+    @apply gap-3;
+  }
+
+  .wrapper-result {
+    @apply px-4 py-4;
+  }
+}
+
+@media (max-width: 37.25rem) {
+  .result {
+    @apply text-lg;
+    letter-spacing: -0.0195rem;
+    margin: 0 0 1rem 0;
+  }
+
+  h2 {
+    @apply text-lg;
+    margin: 1rem 0rem;
+  }
+
+  .wrapper-result {
+    @apply px-4 py-4;
+  }
+
+  .wrapper-content {
+    @apply gap-4;
+  }
+
+  .card .image {
+    height: 6.875rem;
+  }
+}

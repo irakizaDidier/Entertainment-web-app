@@ -41,30 +41,50 @@ export const initialState: MovieState = {
   searchTerm: '',
 };
 
+function updateBookmarkedShowsInLocalStorage(movies: MovieTypes[]) {
+  const bookmarkedTitles = movies
+    .filter((movie) => movie.isBookmarked)
+    .map((movie) => movie.title);
+
+  localStorage.setItem('bookmarkedShows', JSON.stringify(bookmarkedTitles));
+}
+
 export const movieReducer = createReducer(
   initialState,
-  on(loadMoviesSuccess, (state, { movies }) => ({
-    ...state,
-    movies: movies.map((movie) => ({
+
+  on(loadMoviesSuccess, (state, { movies }) => {
+    const updatedMovies = movies.map((movie) => ({
       ...movie,
-      year: Number(movie.year),
-    })),
-  })),
+      year: Number(movie.year), // Ensure year is a number
+      isBookmarked: movie.isBookmarked ?? false, // Default to false if missing
+      isTrending: movie.isTrending ?? false, // Default to false if missing
+      thumbnail: movie.thumbnail ?? {
+        trending: { small: '', large: '', medium: '' }, // Default empty thumbnails
+        regular: { small: '', medium: '', large: '' },
+      },
+    }));
+    return { ...state, movies: updatedMovies };
+  }),
+
   on(setSearchTerm, (state, { searchTerm }) => ({
     ...state,
     searchTerm,
   })),
+
   on(resetMovies, () => initialState),
-  on(setBookmarkedShow, (state, { isBookmarked, title }) => ({
-    ...state,
-    movies: state.movies.map((movie) => {
+
+  on(setBookmarkedShow, (state, { isBookmarked, title }) => {
+    const updatedMovies = state.movies.map((movie) => {
       if (movie.title === title) {
-        return {
-          ...movie,
-          isBookmarked,
-        };
+        return { ...movie, isBookmarked };
       }
       return movie;
-    }),
-  }))
+    });
+    updateBookmarkedShowsInLocalStorage(updatedMovies);
+
+    return {
+      ...state,
+      movies: updatedMovies,
+    };
+  })
 );

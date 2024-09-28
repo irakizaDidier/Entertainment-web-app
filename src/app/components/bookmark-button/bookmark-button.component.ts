@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { bookmarkShow } from '../../stores/actions/movie.actions';
+import { setBookmarkedShow } from '../../stores/actions/movie.actions';
 
 @Component({
   selector: 'app-bookmark-button',
   templateUrl: './bookmark-button.component.html',
-  styleUrl: './bookmark-button.component.css',
+  styleUrls: ['./bookmark-button.component.css'],
 })
 export class BookmarkButtonComponent {
   @Input() showBookmarkedImg: boolean = false;
@@ -14,6 +14,13 @@ export class BookmarkButtonComponent {
   constructor(private store: Store) {}
 
   bookmarkFn(): void {
-    this.store.dispatch(bookmarkShow({ title: this.showTitle }));
+    if (this.showTitle) {
+      this.store.dispatch(
+        setBookmarkedShow({
+          title: this.showTitle,
+          isBookmarked: !this.showBookmarkedImg,
+        })
+      );
+    }
   }
 }

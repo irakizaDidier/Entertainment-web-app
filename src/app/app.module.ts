@@ -20,7 +20,12 @@ import { MoviesComponent } from './components/movies/movies.component';
 import { SeriesComponent } from './components/series/series.component';
 import { InputComponent } from './components/input/input.component';
 import { BookmarkButtonComponent } from './components/bookmark-button/bookmark-button.component';
-import { MovieEffects } from './stores/effects/movie.effects'; // Import MovieEffects
+import { MovieEffects } from './stores/effects/movie.effects';
+import { RecommendedComponent } from './components/recommended/recommended.component';
+import { BookmarkedComponent } from './components/bookmarked/bookmarked.component'; 
+import { HomeComponent } from './components/home/home.component';
+import { TrendingComponent } from './components/trending/trending.component';
+
 
 @NgModule({
   declarations: [
@@ -36,6 +41,10 @@ import { MovieEffects } from './stores/effects/movie.effects'; // Import MovieEf
     SeriesComponent,
     InputComponent,
     BookmarkButtonComponent,
+    RecommendedComponent,
+    BookmarkedComponent,
+    HomeComponent,
+    TrendingComponent,
   ],
   imports: [
     BrowserModule,

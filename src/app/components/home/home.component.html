@@ -1,0 +1,39 @@
+<div class="wrapper flex flex-col gap-8 bg-semiDarkBlue">
+  <div class="wrapper_input">
+    <app-input
+      [placeholderText]="'Search for movies or TV series'"></app-input>
+  </div>
+
+  <div class="wrapper-result" *ngIf="searchTerm.length !== 0">
+    <p class="result HeadingL mb-6 text-white">
+      Found {{ filteredShows.length }} results for '{{ searchTerm }}'
+    </p>
+
+    <div class="wrapper-content flex flex-wrap gap-10">
+      <div
+        *ngFor="let show of filteredShows"
+        class="card relative rounded-lg flex gap-2 flex-col">
+        <div
+          class="image w-[280px] h-[174px] rounded-lg bg-center bg-cover"
+          [style.background-image]="'url(' + show.thumbnail.regular.large + ')'">
+          <app-bookmark-button
+            [showTitle]="show.title"
+            [showBookmarkedImg]="show.isBookmarked"></app-bookmark-button>
+        </div>
+        <app-movie-info [movieData]="{
+          title: show.title,
+          year: show.year,
+          category: show.category,
+          rating: show.rating,
+          isBookmarked: show.isBookmarked || false,
+        isTrending: show.isTrending || false,
+        thumbnail: show.thumbnail
+        }"></app-movie-info>
+      </div>
+    </div>
+  </div>
+
+  <app-trending *ngIf="searchTerm.length === 0"></app-trending>
+  <app-recommended
+    *ngIf="searchTerm.length === 0"></app-recommended>
+</div>

@@ -1,0 +1,71 @@
+@keyframes fadeInOut {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInOut {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in-out {
+  animation: fadeInOut 0.6s ease-in-out;
+}
+
+@media (max-width: 26.25rem) {
+  .wrapper {
+    @apply px-4 pb-4;
+  }
+}
+
+@media (max-width: 48rem) {
+  .wrapper {
+    @apply px-6 pb-6;
+  }
+
+  .wrapper-content {
+    @apply grid items-center gap-6 w-full;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .card .image {
+    @apply w-full h-[8.75rem] bg-cover bg-center;
+  }
+
+  .card {
+    @apply w-full !important;
+  }
+}
+
+@media (max-width: 37.25rem) {
+  .result {
+    @apply text-xl my-4;
+    letter-spacing: -0.0195rem;
+  }
+
+  h2 {
+    @apply text-xl my-4;
+  }
+
+  .wrapper {
+    @apply px-4 pb-4;
+  }
+
+  .wrapper-content {
+    @apply gap-[0.9375rem];
+  }
+
+  .card .image {
+    @apply h-[6.875rem];
+  }
+}

@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { forkJoin, of } from 'rxjs';
+import { of } from 'rxjs';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import {
   loadMoviesSuccess,
@@ -20,11 +20,8 @@ export class MovieEffects {
     this.actions$.pipe(
       ofType(loadMovies),
       mergeMap(() => {
-        // Fetch movies from JSON
         const moviesDataRequest = this.http.get<any[]>(this.movieDataUrl);
-
-        // Simulate bookmarked shows from local storage
-        const bookmarkedShows = JSON.parse(
+        const bookmarkedShows: string[] = JSON.parse(
           localStorage.getItem('bookmarkedShows') || '[]'
         );
 

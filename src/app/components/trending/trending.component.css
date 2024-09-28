@@ -1,0 +1,36 @@
+@media (max-width: 48rem) {
+  .wrapper {
+    @apply pl-6;
+  }
+}
+
+@media (max-width: 26.25rem) {
+  .wrapper {
+    @apply pl-4;
+  }
+
+  .card-item {
+    @apply w-[15rem] h-[8.75rem] p-4;
+  }
+
+  section {
+    @apply h-[10.25rem];
+  }
+
+  h2 {
+    @apply text-lg;
+  }
+}
+
+.card {
+  animation: fadeInOut 0.6s ease-in-out;
+}
+
+.custom_scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.custom_scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
