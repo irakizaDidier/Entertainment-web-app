@@ -21,15 +21,10 @@ export class SignupPage implements OnInit {
 
   constructor(private router: Router, private store: Store) {}
 
-  navigateToLoginRoute() {
-    this.router.navigate(['/login']);
-  }
-
   ngOnInit(): void {}
 
   togglePasswordVisibility(fieldId: string) {
     const field = document.getElementById(fieldId) as HTMLInputElement;
-
     if (field) {
       field.type = this.passwordVisible ? 'password' : 'text';
       this.passwordVisible = !this.passwordVisible;
@@ -38,7 +33,6 @@ export class SignupPage implements OnInit {
 
   toggleConfirmPasswordVisibility(fieldId: string) {
     const field = document.getElementById(fieldId) as HTMLInputElement;
-
     if (field) {
       field.type = this.confirmpasswordVisible ? 'password' : 'text';
       this.confirmpasswordVisible = !this.confirmpasswordVisible;
@@ -54,6 +48,11 @@ export class SignupPage implements OnInit {
     if (form.valid && password === confirmpassword && emailRegex.test(email)) {
       this.loading = true;
       this.store.dispatch(signup({ email, password, confirmpassword }));
+
+      setTimeout(() => {
+        this.loading = false;
+        this.router.navigate(['/login']);
+      }, 1000);
     } else if (!emailRegex.test(email)) {
       this.showError = true;
       this.errorText = 'Email is not in a valid format';
@@ -63,5 +62,11 @@ export class SignupPage implements OnInit {
     }
 
     return false;
+  }
+
+  navigateToLoginRoute() {
+    setTimeout(() => {
+      this.router.navigate(['/login']);
+    }, 1000);
   }
 }

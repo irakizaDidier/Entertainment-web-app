@@ -38,8 +38,13 @@ export class LoginPage implements OnInit {
       const email = form.value.email;
       const password = form.value.password;
       this.loading = true;
-
       this.store.dispatch(login({ email, password }));
+
+
+      setTimeout(() => {
+        this.router.navigate(['/home']);
+        this.loading = false;
+      }, 1000);
     }
     return false;
   }

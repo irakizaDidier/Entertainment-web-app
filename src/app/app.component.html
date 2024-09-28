@@ -1,1 +1,12 @@
-<router-outlet></router-outlet>
+<ng-container *ngIf="isAuthLayoutRoute(); else defaultLayout">
+  <app-auth-layout></app-auth-layout>
+</ng-container>
+
+<ng-template #defaultLayout>
+  <div class="wrapper-content flex bg-darkBlue">
+    <app-header></app-header>
+    <main class="w-full pt-16">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</ng-template>

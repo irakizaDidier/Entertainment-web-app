@@ -11,7 +11,5 @@ export class MovieInfoComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log('Movie Data:', this.movieData);
-  }
+  ngOnInit(): void {}
 }

@@ -55,11 +55,11 @@ export const movieReducer = createReducer(
   on(loadMoviesSuccess, (state, { movies }) => {
     const updatedMovies = movies.map((movie) => ({
       ...movie,
-      year: Number(movie.year), // Ensure year is a number
-      isBookmarked: movie.isBookmarked ?? false, // Default to false if missing
-      isTrending: movie.isTrending ?? false, // Default to false if missing
+      year: Number(movie.year),
+      isBookmarked: movie.isBookmarked ?? false,
+      isTrending: movie.isTrending ?? false,
       thumbnail: movie.thumbnail ?? {
-        trending: { small: '', large: '', medium: '' }, // Default empty thumbnails
+        trending: { small: '', large: '', medium: '' },
         regular: { small: '', medium: '', large: '' },
       },
     }));

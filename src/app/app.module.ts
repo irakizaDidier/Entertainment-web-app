@@ -22,10 +22,10 @@ import { InputComponent } from './components/input/input.component';
 import { BookmarkButtonComponent } from './components/bookmark-button/bookmark-button.component';
 import { MovieEffects } from './stores/effects/movie.effects';
 import { RecommendedComponent } from './components/recommended/recommended.component';
-import { BookmarkedComponent } from './components/bookmarked/bookmarked.component'; 
+import { BookmarkedComponent } from './components/bookmarked/bookmarked.component';
 import { HomeComponent } from './components/home/home.component';
 import { TrendingComponent } from './components/trending/trending.component';
-
+import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +45,7 @@ import { TrendingComponent } from './components/trending/trending.component';
     BookmarkedComponent,
     HomeComponent,
     TrendingComponent,
+    AuthLayoutComponent,
   ],
   imports: [
     BrowserModule,
