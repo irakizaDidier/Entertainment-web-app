@@ -1,12 +1,11 @@
- <div class="relative flex items-center">
+<div class="relative flex items-center">
   <button
     (click)="handleClickOpenOptions()"
     class="cursor-pointer"
-    [attr.aria-label]="
-        logoutOptionOpen ? 'close logout option' : 'open logout option'
-      ">
+    [attr.aria-label]="logoutOptionOpen ? 'close logout option' : 'open logout option'">
     <div class="avatar-wrapper border-2 w-10 h-10 rounded-full border-white">
-      <img src="../../../assets/image-avatar.png" alt aria-hidden="true" />
+      <img src="../../../assets/image-avatar.png" alt="User Avatar"
+        aria-hidden="true" />
     </div>
   </button>
 

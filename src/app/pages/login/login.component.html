@@ -3,10 +3,10 @@
   <img src="../../../assets/logo.svg" />
   <main
     class="flex w-full items-center flex-col max-w-[400px] rounded-[20px] bg-semiDarkBlue p-8">
-    <h1 class="HeadingL text-white self-start mb-10">Login</h1>
+    <h1 class="HeadingL text-white self-start mb-10 text-2xl">Login</h1>
     <form class="w-full" (ngSubmit)="onSubmit(form)" #form="ngForm">
       <fieldset class="flex flex-col w-full justify-between h-full gap-6">
-        <legend class="sr-only">enter your information</legend>
+        <legend class="sr-only">Enter your information</legend>
 
         <label for="email" class="relative">
           <input
@@ -17,9 +17,12 @@
             id="email"
             [(ngModel)]="email"
             aria-label="enter your email"
-            required />
+            required
+            #emailInput="ngModel" />
           <span class="absolute right-0 text-red BodyS -top-2"
-            *ngIf="showError">User does not exist</span>
+            *ngIf="emailInput.invalid && (emailInput.touched || form.submitted)">
+            Email is required
+          </span>
         </label>
 
         <label for="password" class="relative">
@@ -31,20 +34,21 @@
             id="password"
             [(ngModel)]="password"
             aria-label="enter your password"
-            required />
+            required
+            #passwordInput="ngModel" />
           <button
             class="absolute w-[22px] h-[22px] right-0 top-2"
             type="button"
             (click)="togglePasswordVisibility('password')">
-            <img
-              class="brightness-[0]"
-              *ngIf="passwordVisible"
+            <img class="brightness-[0]" *ngIf="passwordVisible"
               src="../../../assets/eye.svg" />
-            <img
-              class="brightness-[1000]"
-              *ngIf="!passwordVisible"
+            <img class="brightness-[1000]" *ngIf="!passwordVisible"
               src="../../../assets/eye-block.png" />
           </button>
+          <span class="absolute right-0 text-red BodyS -top-2"
+            *ngIf="passwordInput.invalid && (passwordInput.touched || form.submitted)">
+            Password is required
+          </span>
         </label>
 
         <app-button

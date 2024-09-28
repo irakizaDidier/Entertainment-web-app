@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { login } from '../../stores/actions/auth.actions';
+import { AuthGuard } from '../../guards/auth.guard';
 
 @Component({
   selector: 'app-login',
@@ -16,8 +17,11 @@ export class LoginPage implements OnInit {
   password: string = '';
   passwordVisible: boolean = false;
 
-  constructor(private router: Router, private store: Store) {}
-
+  constructor(
+    private router: Router,
+    private store: Store,
+    private authGuard: AuthGuard
+  ) {}
   navigateToSignupRoute() {
     this.router.navigate(['/signup']);
   }
@@ -39,12 +43,14 @@ export class LoginPage implements OnInit {
       const password = form.value.password;
       this.loading = true;
       this.store.dispatch(login({ email, password }));
-
+      this.authGuard.login();
 
       setTimeout(() => {
         this.router.navigate(['/home']);
         this.loading = false;
       }, 1000);
+    } else {
+      this.showError = true;
     }
     return false;
   }

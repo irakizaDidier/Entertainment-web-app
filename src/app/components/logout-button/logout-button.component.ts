@@ -15,11 +15,17 @@ export class LogoutButtonComponent {
   constructor(private router: Router, private store: Store) {}
 
   handleClickOpenOptions() {
-    this.logoutOptionOpen = !this.logoutOptionOpen; // Toggle the logout options
+    this.logoutOptionOpen = !this.logoutOptionOpen;
   }
 
   logoutFn() {
     this.loading = true;
-    this.store.dispatch(logout()); // Dispatch the logout action
+    this.store.dispatch(logout());
+
+    setTimeout(() => {
+      localStorage.removeItem('isAuthenticated');
+      this.router.navigate(['/login']);
+      this.loading = false; 
+    }, 1000);
   }
 }

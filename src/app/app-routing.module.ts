@@ -6,21 +6,19 @@ import { SeriesComponent } from './components/series/series.component';
 import { MoviesComponent } from './components/movies/movies.component';
 import { BookmarkedComponent } from './components/bookmarked/bookmarked.component';
 import { HomeComponent } from './components/home/home.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'movies', component: MoviesComponent },
-  { path: 'series', component: SeriesComponent },
-  { path: 'bookmarked', component: BookmarkedComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'movies', component: MoviesComponent, canActivate: [AuthGuard] },
+  { path: 'series', component: SeriesComponent, canActivate: [AuthGuard] },
   {
-    path: 'login',
-    component: LoginPage,
+    path: 'bookmarked',
+    component: BookmarkedComponent,
+    canActivate: [AuthGuard],
   },
-  {
-    path: 'signup',
-    component: SignupPage,
-  },
-
+  { path: 'login', component: LoginPage },
+  { path: 'signup', component: SignupPage },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login' },
 ];
